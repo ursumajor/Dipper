@@ -21,7 +21,7 @@ function App() {
 
   return (<BrowserRouter>
     <nav className="navbar navbar-expand navbar-dark bg-dark px-3 mb-4">
-      <Link className="navbar-brand fw-bold" to="/recipes">🍴 Cookbook</Link>
+      <Link className="navbar-brand fw-bold" to="/recipes">🍴 Dipper</Link>
       <div className="navbar-nav me-auto">
         <Link className="nav-link" to="/recipes">Recipes</Link>
         <Link className="nav-link" to="/recipes/new">New Recipe</Link>
