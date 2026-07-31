@@ -1,4 +1,4 @@
-const API = "http://localhost:5000";
+import { API_URL as API } from "../config";
 
 const fetchComments = async (recipeId) => {
     const request = await fetch(`${API}/recipes/${recipeId}/comments`, { method: "GET" });

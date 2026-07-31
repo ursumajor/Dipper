@@ -1,5 +1,7 @@
+import { API_URL as API } from "../config";
+
 const fetchCreateRecipe = async (recipe, accessToken) => {
-    const request = await fetch("http://localhost:5000/recipes",
+    const request = await fetch(`${API}/recipes`,
         {
             method: "POST",
             headers: { Authorization: `Bearer ${accessToken}`, "Content-Type": "application/json" },
@@ -9,17 +11,17 @@ const fetchCreateRecipe = async (recipe, accessToken) => {
 };
 
 const fetchAllRecipes = async () => {
-    const request = await fetch("http://localhost:5000/recipes", { method: "GET" });
+    const request = await fetch(`${API}/recipes`, { method: "GET" });
     return await request.json();
 };
 
 const fetchRecipe = async (id) => {
-    const request = await fetch(`http://localhost:5000/recipes/${id}`, { method: "GET" });
+    const request = await fetch(`${API}/recipes/${id}`, { method: "GET" });
     return await request.json();
 };
 
 const fetchFollowingRecipes = async (accessToken) => {
-    const request = await fetch("http://localhost:5000/recipes/following", {
+    const request = await fetch(`${API}/recipes/following`, {
         method: "GET",
         headers: { Authorization: `Bearer ${accessToken}` },
     });
@@ -27,7 +29,7 @@ const fetchFollowingRecipes = async (accessToken) => {
 };
 
 const fetchLikeStatus = async (id, accessToken) => {
-    const request = await fetch(`http://localhost:5000/recipes/${id}/like`, {
+    const request = await fetch(`${API}/recipes/${id}/like`, {
         method: "GET",
         headers: { Authorization: `Bearer ${accessToken}` },
     });
@@ -35,7 +37,7 @@ const fetchLikeStatus = async (id, accessToken) => {
 };
 
 const likeRecipe = async (id, accessToken) => {
-    const request = await fetch(`http://localhost:5000/recipes/${id}/like`, {
+    const request = await fetch(`${API}/recipes/${id}/like`, {
         method: "POST",
         headers: { Authorization: `Bearer ${accessToken}` },
     });
@@ -43,7 +45,7 @@ const likeRecipe = async (id, accessToken) => {
 };
 
 const unlikeRecipe = async (id, accessToken) => {
-    const request = await fetch(`http://localhost:5000/recipes/${id}/like`, {
+    const request = await fetch(`${API}/recipes/${id}/like`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${accessToken}` },
     });

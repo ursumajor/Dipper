@@ -1,10 +1,9 @@
 import './App.css';
 import React, {Fragment, useState, useEffect} from 'react';
 
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
 
-import HomePage from './pages/HomePage';
 import Feed from './pages/Feed';
 import FollowingFeed from './pages/FollowingFeed';
 import RecipeDetail from './pages/RecipeDetail';
@@ -21,20 +20,25 @@ function App() {
   const {isAuthenticated} = useAuth0(); 
 
   return (<BrowserRouter>
-    <nav>
-      <Link to="/recipes">Recipes</Link> |{" "}
-      <Link to="/recipes/new">New Recipe</Link>
-      {!isAuthenticated && (
-        <>{" "}|{" "}<Link to="/login">login</Link></>
-      )}
-      {isAuthenticated && (
-        <>{" "}|{" "}<Link to="/profile">Profile</Link></>
-      )}
+    <nav className="navbar navbar-expand navbar-dark bg-dark px-3 mb-4">
+      <Link className="navbar-brand fw-bold" to="/recipes">🍴 Cookbook</Link>
+      <div className="navbar-nav me-auto">
+        <Link className="nav-link" to="/recipes">Recipes</Link>
+        <Link className="nav-link" to="/recipes/new">New Recipe</Link>
+      </div>
+      <div className="navbar-nav">
+        {!isAuthenticated && (
+          <Link className="nav-link" to="/login">Login</Link>
+        )}
+        {isAuthenticated && (
+          <Link className="nav-link" to="/profile">Profile</Link>
+        )}
+      </div>
     </nav>
 
     <OnboardingGate>
       <Routes>
-        <Route path="/" element={<HomePage/>} />
+        <Route path="/" element={<Navigate to="/recipes" replace />} />
         <Route path="/recipes" element={<Feed/>} />
         <Route path="/following" element={<FollowingFeed/>} />
         <Route path="/recipes/new" element={<NewRecipe/>} />

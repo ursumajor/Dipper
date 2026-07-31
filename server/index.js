@@ -12,8 +12,9 @@ app.use("/profile",profileRouter)
 app.use("/recipes",recipeRouter)
 app.use("/cookbooks",cookbookRouter)
 
-const server = app.listen(5000, () => {
-    console.log("server has started on port 5000")
+const PORT = process.env.PORT || 5000;
+const server = app.listen(PORT, () => {
+    console.log(`server has started on port ${PORT}`)
 });
 
 process.on('SIGINT', () => {

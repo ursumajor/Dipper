@@ -5,7 +5,9 @@ const getAllRecipes = async () => {
         `SELECT r.*, u.username, u.pfp_url
          FROM recipes r
          JOIN users u ON u.id = r.user_id
-         ORDER BY r.created_at DESC, r.id DESC`
+         ORDER BY
+            CASE WHEN u.username = 'recipe-bot' THEN 1 ELSE 0 END,
+            r.created_at DESC, r.id DESC`
     );
     return result.rows;
 }

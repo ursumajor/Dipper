@@ -39,14 +39,12 @@ const RecipeDetail = () => {
                 <SaveToCookbook recipeId={recipe.id} />
             </div>
 
-            {recipe.image_url && (
-                <img
-                    src={recipe.image_url}
-                    alt={recipe.title}
-                    width={"400px"}
-                    style={{ objectFit: "cover" }}
-                />
-            )}
+            <img
+                src={recipe.image_url || "/no-image.svg"}
+                alt={recipe.title}
+                width={"400px"}
+                style={{ objectFit: "cover" }}
+            />
 
             {recipe.description && <p className="mt-3">{recipe.description}</p>}
 

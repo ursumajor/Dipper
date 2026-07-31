@@ -1,4 +1,4 @@
-const API = "http://localhost:5000";
+import { API_URL as API } from "../config";
 
 const fetchMyProfile = async (accessToken) => {
     const request = await fetch(`${API}/profile`, {

@@ -12,19 +12,27 @@ const RecipeGrid = ({ recipes, emptyMessage = "No recipes yet." }) => {
                 <Link
                     key={recipe.id}
                     to={`/recipes/${recipe.id}`}
-                    className="m-2 text-decoration-none text-dark"
+                    className="text-decoration-none text-dark m-2"
                 >
-                    {recipe.image_url && (
+                    <div className="card shadow-sm h-100" style={{ width: "250px" }}>
                         <img
-                            src={recipe.image_url}
+                            className="card-img-top"
+                            src={recipe.image_url || "/no-image.svg"}
                             alt={recipe.title}
-                            width={"250px"}
-                            height={"250px"}
-                            style={{ objectFit: "cover" }}
+                            style={{ height: "200px", objectFit: "cover" }}
                         />
-                    )}
-                    <h3>{recipe.title}</h3>
-                    {recipe.username && <p>by {recipe.username}</p>}
+                        <div className="card-body">
+                            <h5
+                                className="card-title text-truncate mb-1"
+                                style={{ lineHeight: 1.4, paddingBottom: "2px" }}
+                            >
+                                {recipe.title}
+                            </h5>
+                            {recipe.username && (
+                                <p className="card-text text-muted small mb-0">by {recipe.username}</p>
+                            )}
+                        </div>
+                    </div>
                 </Link>
             ))}
         </div>
